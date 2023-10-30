@@ -17,11 +17,11 @@ const deletePlayer = "players/PLAYER-ID";
 const fetchAllPlayers = async () => {
   try {
     const res = await fetch(`${BASEURL}${allOrAddPlayers}`);
-    if (res.ok) {
-      console.log("fetchAllPlayers Function: SUCCESS");
-    } else {
-      console.log("fetchAllPlayers Function: NOT-SUCCESSFUL");
-    }
+        if (res.ok) {
+        console.log("fetchAllPlayers Function: SUCCESS");
+        } else {
+        console.log("fetchAllPlayers Function: NOT-SUCCESSFUL");
+        }
     const fetchAllPlayersjson = await res.json();
     return fetchAllPlayersjson;
   } catch (error) {
@@ -32,11 +32,11 @@ const fetchAllPlayers = async () => {
 const fetchSinglePlayer = async (playerId) => {
   try {
     const res = await fetch(`${BASEURL}${singlePlayer}`);
-    if (res.ok) {
-      console.log("fetchAllPlayers Function: SUCCESS");
-    } else {
-      console.log("fetchAllPlayers Function: NOT-SUCCESSFUL");
-    }
+        if (res.ok) {
+        console.log("fetchAllPlayers Function: SUCCESS");
+        } else {
+        console.log("fetchAllPlayers Function: NOT-SUCCESSFUL");
+        }
     const fetchSinglePlayerjson = res.json();
     return fetchSinglePlayerjson;
   } catch (err) {
@@ -52,22 +52,21 @@ const addNewPlayer = async (playerObj) => {
         "Content-Type": "appication/json",
       },
       body: JSON.stringify({
+        //TODO ------------------------------------------------------------- Add Name Field Input Value Here
         name: `${playerObj.name}`,
+        //TODO ------------------------------------------------------------- Add Breed Field Input Value Here 
         breed: `${playerObj.breed}`,
-        status: `${playerObj.status}`,
-        imageUrl: `${playerObj.imageUrl}`,
-        teamId: `${playerObj.teamId}`,
       }),
     });
-    if (res.ok) {
-      console.log("fetchAllPlayers Function: SUCCESS");
-    } else {
-      console.log("fetchAllPlayers Function: NOT-SUCCESSFUL");
-    }
+        if (res.ok) {
+        console.log('addNewPlayer Function: SUCCESS');
+        } else {
+        console.log('addNewPlayer Function: NOT-SUCCESSFUL');
+        }
     const addNewPlayerjson = await res.json();
     return addNewPlayerjson;
   } catch (err) {
-    console.error("Oops, something went wrong with adding that player!", err);
+    console.error('Oops, something went wrong with adding that player!', err);
   }
 };
 
@@ -76,6 +75,11 @@ const removePlayer = async (playerId) => {
     const res = await fetch(`${BASEURL}${deletePlayer}`, {
       method: "DELETE",
     });
+        if (res.ok) {
+        console.log('removePlayer Function: SUCCESS');
+        } else {
+        console.log('removePlayer Function: NOT-SUCCESSFUL');
+        }
     const removePlayerjson = res.json();
     return removePlayerjson;
   } catch (err) {
@@ -107,20 +111,24 @@ const removePlayer = async (playerId) => {
  * @returns the playerContainerHTML variable.
  */
 //!------------------------------------------------------------------------------------------------------------//
-const renderAllPlayers = (playerList) => {
+const renderAllPlayers = async (playerList) => {
   try {
-    playerList.innerHTML = "";
+    playerList.innerHTML = '';
     playerList.forEach((player) => {
-      const playerElement = document.createElement("div");
-      playerElement.classList.add("renderAllPlayersDiv");
+      const playerElement = document.createElement('div');
+      playerElement.classList.add('renderAllPlayersDiv');
       playerElement.innerHTML = `
-            
-            `;
+      <div id="dogPlayerTile">
+        <img id="dogImage" src="${playerList.imageUrl}" alt="Image of dog ${playerList.breed}">
+        <h2 id="playerTileName">${playerList.name}</h2>
+        <button class="remove-button" data-id=${player.id}">Remove</button>
+        <button class="see-detials-button" data-id="${player.id}">See Details</button>
+      </div>`;
     });
 
     //!------------------------------------------------------------------------------------------------------------//
   } catch (err) {
-    console.error("Uh oh, trouble rendering players!", err);
+    console.error('Uh oh, trouble rendering players!', err);
   }
 };
 
@@ -130,8 +138,10 @@ const renderAllPlayers = (playerList) => {
  */
 const renderNewPlayerForm = () => {
   try {
-  } catch (err) {
-    console.error("Uh oh, trouble rendering the new player form!", err);
+  
+  }
+  catch (err) {
+    console.error('Uh oh, trouble rendering the new player form!', err);
   }
 };
 
