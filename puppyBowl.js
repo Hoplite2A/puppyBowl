@@ -109,26 +109,27 @@ const removePlayer = async (playerId) => {
 ? @param playerList - an array of player objects
 ? @returns the playerContainerHTML variable.
 */
-function renderSinglePlayerDetails (playerID) {
+function renderSinglePlayerDetails (playerDetails) {
   try {
     playerContainer.innerHTML = '';
     const seeSinglePlayerDetails = document.createElement("div");
     seeSinglePlayerDetails.classList.add("singlePlayerDetailsdiv");
-    const playerDetails = fetchSinglePlayer(playerID);
-    console.log(playerDetails);
     seeSinglePlayerDetails.innerHTML = `
-      <h2 class="seeDetailspName" id="seeDetailsName">${playerDetails.name}</h2>
-      <p class="seeDetailspBreed" id="seeDetailsBreed">${playerDetails.breed}</p>
-      <p class="seeDetailspStatus" id="seeDetailsStatus">${playerDetails.status}</p>
-      <p class="seeDetailspTeamId" id="seeDetailsTeamId">${playerDetails.teamId}</p>
+      <h2 class="seeDetailspName" id="seeDetailsName">Name: ${playerDetails.name}</h2>
+      <p class="seeDetailspBreed" id="seeDetailsBreed">Breed: ${playerDetails.breed}</p>
+      <p class="seeDetailspStatus" id="seeDetailsStatus">Status: ${playerDetails.status}</p>
+      <p class="seeDetailspTeamId" id="seeDetailsTeamId">Team: ${playerDetails.teamId}</p>
       <button class="singleCloseButton" id="seeDetailsCloseButton">Close</button>
     `;
 
     playerContainer.appendChild(seeSinglePlayerDetails);
 
-    const seeDetailsCloseButton = seeSinglePlayerDetails.querySelector(".seeDetailsCloseButton");
+    const seeDetailsCloseButton = seeSinglePlayerDetails.querySelector(".singleCloseButton");
     seeDetailsCloseButton.addEventListener("click", async (event) => {
       seeSinglePlayerDetails.remove();
+      const playerArray = await fetchAllPlayers();
+      const playerList = playerArray.data.players;
+      renderAllPlayers(playerList);
     });
   } catch (err) {
     console.error("Uh oh, trouble rendering single player details!", err);
@@ -150,14 +151,13 @@ const renderAllPlayers = async (playerList) => {
                       <button class="remove-button" data-id=${player.id}">Remove</button>
                     </div>
               `;
-      playerContainer.appendChild(playerElement);
-
+              
       //*See Details Button
       const seeDetailsButton = playerElement.querySelector(".see-details-button");
       seeDetailsButton.addEventListener("click", async (event) => {
         const detailId = await fetchSinglePlayer(player.id)
-        console.log(detailId);
-        renderSinglePlayerDetails(detailId);
+        const newDetail = detailId.data.player;
+        renderSinglePlayerDetails(newDetail);
       });
 
       //* Remove Player Button
@@ -166,6 +166,7 @@ const renderAllPlayers = async (playerList) => {
         removePlayer(player.id);
         init();
       });
+      playerContainer.appendChild(playerElement);
     });
   } catch (err) {
     console.error("Uh oh, trouble rendering all players!", err);
@@ -196,7 +197,7 @@ const renderNewPlayerForm = () => {
     addNewPlayerButton.addEventListener("click", async (event) => {
       let newPlayerName = document.getElementById("newPlayerName").value;
       let newPlayerBreed = document.getElementById("newPlayerBreed").value;
-      addNewPlayer(newPlayerName, newPlayerBreed);
+      await addNewPlayer(newPlayerName, newPlayerBreed);
     });
   } catch (err) {
     console.error("Uh oh, trouble rendering the new player form!", err);

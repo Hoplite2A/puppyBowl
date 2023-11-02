@@ -1,4 +1,4 @@
-/* Styling for newPlayerForm() && seeIndividualDetails() */
+/* Styling for newPlayerForm() */
 .newPlayerForm {
     font-size: 35px;
     margin-bottom: 15px;
@@ -19,4 +19,18 @@ label#newPlayerBreed {
     padding: 10px, 0px;
     font-size: normal;
     font-weight:bold
+}
+
+/* seeIndividualDetails() */
+.singlePlayerDetailsdiv {
+    text-align: center;
+}
+.seeDetailspName{
+    font-size: large;
+    font-weight: 700;
+}
+.seeDetailspBreed,
+.seeDetailspStatus, .seeDetailspTeamId {
+    font-size:medium;
+    font-weight: 600;
 }

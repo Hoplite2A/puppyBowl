@@ -36,11 +36,11 @@
         border-radius: 25px;
       }
       /* Need to figure out why the 'nth-child()' for button div isn't working properly */
-      .dogPlayerTileButtons:nth-child(even) > button {
+      .dogPlayerTiles:nth-child(even) button {
         background-color: transparent;
         color: rgb(0, 0, 0);
       }
-      .dogPlayerTileButtons:nth-child(odd) > button {
+      .dogPlayerTiles:nth-child(odd) button {
         background-color: transparent;
         color: rgb(255, 255, 255);
       }
@@ -78,6 +78,8 @@
           "space-around";
         document.getElementById("all-players-container").style.flexWrap =
           "wrap";
+        document.getElementsByClass(".seeDetailspName").style.fontsize = "large";
+        document.getElementsByClass(".seeDetailspName").style.fontweight = "700";
       </script>
     </div>
   </body>
