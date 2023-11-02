@@ -1,6 +1,8 @@
-<!-- <div id="dogPlayerTile">
-    <img id="dogImage" src="${playerList.imageUrl}" alt="Image of dog ${playerList.breed}">
-    <h2 id="playerTileName">${playerList.name}</h2>
-    <button class="remove-button" data-id=${player.id}">Remove</button>
-    <button class="see-detials-button" data-id="${player.id}">See Details</button>
-</div> -->
+<!--! Written for renderAllPlayers function in puppyBowl.js  -->
+
+    <img class="playerTileImage" id="dogImage" src="${playerList.imageUrl}" alt="Image of dog ${playerList.breed}">
+    <h2 class="playerTileName" id="playerTileName">${playerList.name}</h2>
+    <div class="dogPlayerTileButtons">
+        <button class="remove-button" data-id=${player.id}">Remove</button>
+        <button class="see-detials-button" data-id="${player.id}">See Details</button>
+    </div>

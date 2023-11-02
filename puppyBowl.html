@@ -1,26 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <!-- import JavaScript -->
-        <script defer src="./puppyBowl.js" type="module"></script>
-        <!-- import CSS -->
-        <link rel="stylesheet" href="./puppyBowl.css">
-        <title>PuppyBowl</title>
-    </head>
-        <body>
-        <!-- form to add new players -->
-        <div id="new-player-form">
+    <!-- import JavaScript -->
+    <script defer src="./puppyBowl.js" type="module"></script>
+    <!-- import CSS -->
+    <title>PuppyBowl</title>
+    <style type="text/css">
+      /* Styling for renderAllPlayer() && body */
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-image: url(./assets/stadiumBackgroundImage2.jpg);
+        background-size: 1900px;
+        background-attachment: fixed;
+      }
+      .dogPlayerTiles:nth-child(even) {
+        background-color: #f6b40dc0;
+        color: black;
+        margin: 25px;
+        text-align: center;
+        border-radius: 25px;
+      }
+      .dogPlayerTiles:nth-child(odd) {
+        background-color: #1e4775c0;
+        color: white;
+        margin: 25px;
+        text-align: center;
+        border-radius: 25px;
+      }
+      /* Need to figure out why the 'nth-child()' for button div isn't working properly */
+      .dogPlayerTileButtons:nth-child(even) > button {
+        background-color: transparent;
+        color: rgb(0, 0, 0);
+      }
+      .dogPlayerTileButtons:nth-child(odd) > button {
+        background-color: transparent;
+        color: rgb(255, 255, 255);
+      }
+      .playerTileImage {
+        width: 200px;
+        border-radius: 25px;
+        margin: 15px;
+      }
+      button {
+        margin-bottom: 10px;
+        font-size: medium;
+        font-weight: bold;
+        background-color: transparent;
+        border-color: transparent;
+      }
+    </style>
+    <link rel="stylesheet" type="text/css" href="./puppyBowl.css" />
+  </head>
+  <body>
+    <!-- form to add new players -->
+    <div id="new-player-form">
+      <script>
+        document.getElementById("new-player-form").style.textAlign = "center";
+        document.getElementById("new-player-form").style.margin = "25px";
+      </script>
+    </div>
 
-        </div>
-
-        <!-- container for all players -->
-        <div id="all-players-container">
-
-        </div>
-    </body>
+    <!-- container for all players -->
+    <div id="all-players-container">
+      <script>
+        document.getElementById("all-players-container").style.display = "flex";
+        document.getElementById("all-players-container").style.flexDirection =
+          "row";
+        document.getElementById("all-players-container").style.justifyContent =
+          "space-around";
+        document.getElementById("all-players-container").style.flexWrap =
+          "wrap";
+      </script>
+    </div>
+  </body>
 </html>
-
