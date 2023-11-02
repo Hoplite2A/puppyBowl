@@ -115,11 +115,14 @@ function renderSinglePlayerDetails (playerDetails) {
     const seeSinglePlayerDetails = document.createElement("div");
     seeSinglePlayerDetails.classList.add("singlePlayerDetailsdiv");
     seeSinglePlayerDetails.innerHTML = `
-      <h2 class="seeDetailspName" id="seeDetailsName">Name: ${playerDetails.name}</h2>
-      <p class="seeDetailspBreed" id="seeDetailsBreed">Breed: ${playerDetails.breed}</p>
-      <p class="seeDetailspStatus" id="seeDetailsStatus">Status: ${playerDetails.status}</p>
-      <p class="seeDetailspTeamId" id="seeDetailsTeamId">Team: ${playerDetails.teamId}</p>
-      <button class="singleCloseButton" id="seeDetailsCloseButton">Close</button>
+      <img class="playerTileImage" id="dogImage" src="${playerDetails.imageUrl}" alt="Image of ${playerDetails.breed} breed of dog">
+      <div class="placeHolder">
+        <h2 class="seeDetailspName" id="seeDetailsName">Name: ${playerDetails.name}</h2>
+        <p class="seeDetailspBreed" id="seeDetailsBreed">Breed: ${playerDetails.breed}</p>
+        <p class="seeDetailspStatus" id="seeDetailsStatus">Status: ${playerDetails.status}</p>
+        <p class="seeDetailspTeamId" id="seeDetailsTeamId">Team: ${playerDetails.teamId}</p>
+        <button class="singleCloseButton" id="seeDetailsCloseButton">Close</button>
+      </div>
     `;
 
     playerContainer.appendChild(seeSinglePlayerDetails);
@@ -184,9 +187,9 @@ const renderNewPlayerForm = () => {
     newPlayerFormElement.classList.add("newPlayersFormElement");
     newPlayerFormElement.innerHTML = `
       <h2 class="newPlayerForm">Enter New Player</h2>
-      <label type="text" for="newPlayerName" id="newPlayerNameLabel">Name: </label>
+      <label class="newPlayerInput" type="text" for="newPlayerName" id="newPlayerNameLabel">Name: </label>
       <input type="text" name="newPlayerName" id="newPlayerName">
-      <label type="text" for="newPlayerBreed" id="newPlayerBreedLabel">Breed: </label>
+      <label class="newPlayerInput" type="text" for="newPlayerBreed" id="newPlayerBreedLabel">Breed: </label>
       <input type="text" name="newPlayerBreed" id="newPlayerBreed">
       <button class="addNewPlayerButton">Add</button>
     `;

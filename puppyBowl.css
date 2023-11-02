@@ -3,7 +3,7 @@
     font-size: 35px;
     margin-bottom: 15px;
 }
-label#newPlayerName, label#newPlayerBreed {
+.newPlayerInput {
     font-size: 20px;
     font-weight: bold;
 }
@@ -15,15 +15,45 @@ label#newPlayerBreed {
 }
 .addNewPlayerButton {
     margin-left: 25px;
-    background-color: #54575c91;
-    padding: 10px, 0px;
+    background-color: #1e4775c0;
+    border-radius: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     font-size: normal;
     font-weight:bold
 }
 
 /* seeIndividualDetails() */
-.singlePlayerDetailsdiv {
+.singlePlayerDetailsdiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #f6b40dc0;
+    border-radius: 25px;
+}
+.singlePlayerDetailsdiv img {
+        width: 300px;
+        border-radius: 25px;
+        margin: 15px;
+}
+.placeHolder{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.placeHolder p, .placeHolder h2{
     text-align: center;
+    padding: 5px;;
+    font-size: large;
+    font-weight: 700;
+}
+.placeHolder > button{
+    margin: 30%;    
+    background-color: #1e4775c0;
+    border-radius: 25px;
+    color: white;
 }
 .seeDetailspName{
     font-size: large;
