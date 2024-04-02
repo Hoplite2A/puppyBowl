@@ -1,5 +1,6 @@
 /* Styling for newPlayerForm() */
 .newPlayerForm {
+    font-weight: 800;
     font-size: 35px;
     margin-bottom: 15px;
 }
